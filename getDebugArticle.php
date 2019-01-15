@@ -15,4 +15,10 @@ $article = [
     'pagename' => 'Test page'
 ];
 
-echo json_encode($article);
+$xml_data = file_get_contents('https://rss.golem.de/rss.php?feed=RSS2.0');
+
+$xml = simplexml_load_string($xml_data);
+$json = json_encode($xml);
+$array = json_decode($json,TRUE);
+
+echo json_encode($array);
