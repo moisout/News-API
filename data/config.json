@@ -1,0 +1,58 @@
+{
+    "sources": [
+        {
+            "name": "Golem.de",
+            "categories": [
+                {
+                    "name": "all",
+                    "url": "https://rss.golem.de/rss.php?feed=RSS2.0"
+                }
+            ],
+            "fields": {
+                "item": "item",
+                "title": "title",
+                "text": "description",
+                "image": "",
+                "link": "link",
+                "date": "pubDate"
+            },
+            "trackingString": "https://cpx.golem.de/"
+        },
+        {
+            "name": "NZZ",
+            "categories": [
+                {
+                    "name": "all",
+                    "url": "http://www.nzz.ch/recent.rss"
+                }
+            ],
+            "fields": {
+                "item": "item",
+                "title": "title",
+                "text": "description",
+                "image": "media:thumbnail",
+                "link": "link",
+                "date": "pubDate"
+            },
+            "trackingString": "none"
+        },
+        {
+            "name": "Blick",
+            "categories": [
+                {
+                    "name": "all",
+                    "url": "https://www.blick.ch/news/rss.xml"
+                }
+            ],
+            "fields": {
+                "item": "item",
+                "title": "title",
+                "text": "description",
+                "image": "",
+                "link": "link",
+                "date": "pubDate"
+            },
+            "trackingString": "none"
+        }
+    ]
+}
