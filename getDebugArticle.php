@@ -17,7 +17,9 @@ $article = [
 
 $xml_data = file_get_contents('https://rss.golem.de/rss.php?feed=RSS2.0');
 
-$xml = simplexml_load_string($xml_data);
+$cleaned_xml_data = str_replace('https://cpx.golem.de/', '" id="__no_tracking_:D__', $xml_data);
+
+$xml = simplexml_load_string($cleaned_xml_data);
 $json = json_encode($xml);
 $array = json_decode($json,TRUE);
 
