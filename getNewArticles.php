@@ -5,18 +5,24 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-$url = $_SERVER['REQUEST_URI'];
+$url = $_SERVER['REQUEST_URI']; 
 $parts = parse_url($url);
 parse_str($parts['query'], $query);
 
-$xml_data = file_get_contents($query['url']);
+$source_links = $query['urls'];
 
-$cleaned_xml_data = str_replace('https://cpx.golem.de/', '" id="__no_tracking_:D__', $xml_data);
+$data = array();
 
-$xml = simplexml_load_string($cleaned_xml_data);
-$json = json_encode($xml);
-echo $json;
-$array = json_decode($json, TRUE);
+foreach ($source_links as $key => $value) {
+    $xml_data = file_get_contents($value);
 
-// echo json_encode($array);
+    $xml_data = str_replace('<media:', '<', $xml_data);
+
+    $cleaned_xml_data = str_replace('https://cpx.golem.de/', '" id="__no_tracking_:D__', $xml_data);
+    $xml = simplexml_load_string($cleaned_xml_data, null, LIBXML_NOCDATA);
+
+    array_push($data, $xml);
+}
+
+echo json_encode($data);
 ?>
