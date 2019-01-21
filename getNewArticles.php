@@ -9,12 +9,17 @@ $url = $_SERVER['REQUEST_URI'];
 $parts = parse_url($url);
 parse_str($parts['query'], $query);
 
-$source_links = $query['urls'];
+$source_names = $query['sources'];
+
+$configFile = file_get_contents('data/config.json');
+$config = json_decode($configFile, true);
 
 $data = array();
 
-foreach ($source_links as $key => $value) {
-    $xml_data = file_get_contents($value);
+foreach ($source_names as $key => $value) {
+    $url = $config['sources'][$value]['categories']['all']['url'];
+
+    $xml_data = file_get_contents($url);
 
     $xml_data = str_replace('<media:', '<', $xml_data);
 

@@ -1,10 +1,13 @@
 {
-    "sources": [{
+    "sources": {
+        "Golem.de": {
             "name": "Golem.de",
-            "categories": [{
-                "name": "all",
-                "url": "https://rss.golem.de/rss.php?feed=RSS2.0"
-            }],
+            "categories": {
+                "all": {
+                    "name": "all",
+                    "url": "https://rss.golem.de/rss.php?feed=RSS2.0"
+                }
+            },
             "fields": {
                 "item": "item",
                 "title": "title",
@@ -15,12 +18,14 @@
             },
             "trackingString": "https://cpx.golem.de/"
         },
-        {
+        "NZZ": {
             "name": "NZZ",
-            "categories": [{
-                "name": "all",
-                "url": "http://www.nzz.ch/recent.rss"
-            }],
+            "categories": {
+                "all": {
+                    "name": "all",
+                    "url": "http://www.nzz.ch/recent.rss"
+                }
+            },
             "fields": {
                 "item": "item",
                 "title": "title",
@@ -31,12 +36,14 @@
             },
             "trackingString": "none"
         },
-        {
+        "Blick": {
             "name": "Blick",
-            "categories": [{
-                "name": "all",
-                "url": "https://www.blick.ch/news/rss.xml"
-            }],
+            "categories": {
+                "all": {
+                    "name": "all",
+                    "url": "https://www.blick.ch/news/rss.xml"
+                }
+            },
             "fields": {
                 "item": "item",
                 "title": "title",
@@ -47,5 +54,5 @@
             },
             "trackingString": "none"
         }
-    ]
+    }
 }
