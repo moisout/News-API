@@ -53,6 +53,24 @@
                 "date": "pubDate"
             },
             "trackingString": "none"
+        },
+        "Lineageos": {
+            "name": "Lineageos",
+            "categories": {
+                "all": {
+                    "name": "all",
+                    "url": "https://lineageos.org/feed.xml"
+                }
+            },
+            "fields": {
+                "item": "item",
+                "title": "title",
+                "text": "description",
+                "image": "",
+                "link": "link",
+                "date": "pubDate"
+            },
+            "trackingString": "none"
         }
     }
 }
