@@ -24,6 +24,14 @@
                 "all": {
                     "name": "all",
                     "url": "http://www.nzz.ch/recent.rss"
+                },
+                "digital": {
+                    "name": "digital",
+                    "url": "http://www.nzz.ch/mehr/digital.rss"
+                },
+                "schweiz": {
+                    "name": "schweiz",
+                    "url": "http://www.nzz.ch/schweiz.rss"
                 }
             },
             "fields": {
