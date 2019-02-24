@@ -1,19 +1,43 @@
 <?php
+include 'newsportal.php';
+
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Max-Age: 3600");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-$url = $_SERVER['REQUEST_URI']; 
-$parts = parse_url($url);
-parse_str($parts['query'], $query);
+$method = $_SERVER['REQUEST_METHOD'];
 
-$configFile = file_get_contents('data/config.json');
-$config = json_decode($configFile, true);
+$newsportal = new Newsportal();
 
-$data = array();
+$con = $newsportal->dbConnection();
 
+if (!$con) {
+    http_response_code(500);
+} else {
+    switch ($method) {
+        case 'GET':
+            if (!$newsportal->getSources()) {
+                http_response_code(500);
+                echo 'error';
+            } else {
+                echo $newsportal->getSources();
+                http_response_code(200);
+            }
+            break;
 
+        case 'PUT':
+            # code...
+            break;
 
-?>
+        case 'POST':
+            # code...
+            break;
+
+        case 'DELETE':
+            # code...
+            break;
+
+        default:
+            # code...
+            break;
+    }
+}
