@@ -15,10 +15,10 @@ if (!$con) {
 } else {
     switch ($method) {
         case "GET":
-            if (!$newsportal->getSources()) {
+            if (!$newsportal->getCategories()) {
                 http_response_code(500);
             } else {
-                echo json_encode($newsportal->getSources());
+                echo json_encode($newsportal->getCategories());
                 http_response_code(200);
             }
             break;

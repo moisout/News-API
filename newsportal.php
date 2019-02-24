@@ -4,16 +4,17 @@ $config = include 'config.inc.php';
 // Verbindung zur DB herstellen
 class Newsportal
 {
-    private $connection;
+    var $connection;
 
     public function dbConnection()
     {
         global $config;
+        global $connection;
 
         $con = new mysqli($config['host'], $config['user'], $config['pw'], $config['db']);
         if (!$con) {
             echo 'error asd';
-            return false;
+            return false;   
         }
         else{
             $connection = $con;
@@ -33,8 +34,37 @@ class Newsportal
 
     public function getSources()
     {
-        $query = 'SELECT * FROM "sources"';
+        global $connection;
+
+        $query = 'SELECT * FROM `sources`';
         $result = $connection->query($query);
-        return $result;
+
+        if (!$result) {
+            return false;
+        }
+
+        if (is_bool($result)) {
+            return $result;
+        }
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getCategories()
+    {
+        global $connection;
+
+        $query = 'SELECT * FROM `categories`';
+        $result = $connection->query($query);
+
+        if (!$result) {
+            return false;
+        }
+
+        if (is_bool($result)) {
+            return $result;
+        }
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
